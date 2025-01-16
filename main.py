@@ -19,9 +19,14 @@ def getData(ballots:list):
 
     return headers
 
+def print_dict(d):
+    keys = [k for k in d.keys()]
+    keys.sort(key=lambda x: -d[x])
+    for k in keys:
+        print(f"{k}: {d[k]}")
 
 def run_election(ballots:list, headers:list, n):
-    print(f"""-------------------------------------\nRunning election round {n}""")
+    print(f"""------------Running election round {n}------------\n""")
     time.sleep(1)
     current = {}
     total = 0
@@ -52,9 +57,15 @@ def run_election(ballots:list, headers:list, n):
             worst_cs.append(c)
     
     
-    print(f"Eliminating {worst_cs} with score {worst}")
-    print(f"current leader is {best_cs} with score {best}")
-    print(f"Current standings: {current}")
+    print(f"current straggles with scores of {worst}:")
+    [print(x) for x in worst_cs]
+    print("\n")
+    print(f"current leaders with scores of {best}:")
+    [print(x) for x in best_cs]
+    print("\n")
+    print(f"Current standings:")
+    print_dict(current)
+    print("\n")
     print("-------------------------------------------------")
     
     if best > 0.5:
