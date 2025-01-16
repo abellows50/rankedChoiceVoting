@@ -6,7 +6,8 @@
 *.ko
 *.obj
 *.elf
-
+*.csv
+__pycache__/
 # Linker output
 *.ilk
 *.map
